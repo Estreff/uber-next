@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import tw from 'tailwind-styled-components';
 import Link from 'next/link';
 
-const search = () => {
+const Search = () => {
   const [pickup, setPickup] = useState('');
   const [dropoff, setDropoff] = useState('');
 

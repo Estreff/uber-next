@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import Map from '../.next/components/Map';
+import Map from './components/Map';
 import tw from 'tailwind-styled-components';
 import Link from 'next/link';
 

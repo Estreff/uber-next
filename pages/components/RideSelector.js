@@ -1,6 +1,6 @@
 import React from 'react';
 import tw from 'tailwind-styled-components';
-import { carList } from '../../pages/data/carList';
+import { carList } from '../../data/carList';
 
 const RideSelector = () => {
   const time = 5;

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import tw from 'tailwind-styled-components';
 import Link from 'next/link';
-import Map from './components/Map';
+import Map from '../.next/components/Map';
 import { useRouter } from 'next/router';
-import RideSelector from './components/RideSelector';
+import RideSelector from '../.next/components/RideSelector';
 
-const Confirm = () => {
+const confirm = () => {
   const router = useRouter();
   const { pickup, dropoff } = router.query;
 
@@ -65,7 +65,7 @@ const Confirm = () => {
   );
 };
 
-export default Confirm;
+export default confirm;
 
 const Wrapper = tw.div`flex flex-col h-screen`;
 const RideContainer = tw.div`flex flex-1 flex-col  h-1/2`;

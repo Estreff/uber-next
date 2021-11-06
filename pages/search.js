@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import tw from 'tailwind-styled-components';
 import Link from 'next/link';
 
-const Search = () => {
+const search = () => {
   const [pickup, setPickup] = useState('');
   const [dropoff, setDropoff] = useState('');
 
@@ -54,7 +54,7 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default search;
 
 const Wrapper = tw.div`bg-gray-200 h-screen`;
 const ButtonContainer = tw.div`bg-white px-4`;

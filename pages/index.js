@@ -8,7 +8,6 @@ export default function Home() {
     <Wrapper>
       <Map />
       <ActionItems>
-        {/* Header */}
         <Header>
           <UberLogo src="https://i.ibb.co/84stgjq/uber-technologies-new-20218114.jpg" />
           <Profile>

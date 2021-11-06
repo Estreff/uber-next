@@ -5,7 +5,7 @@ import mapboxgl from 'mapbox-gl';
 mapboxgl.accessToken =
   'pk.eyJ1IjoiZXN0cmVmZiIsImEiOiJja3ZscmZkY24ydmhzMnRudXVjdHJ6bzY1In0.vYyoSlZysdyypIUX80VkdA';
 
-const Map = () => {
+const Map = (props) => {
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: 'map',
@@ -13,13 +13,27 @@ const Map = () => {
       center: [-99.29011, 39.39172],
       zoom: 3,
     });
-  }, []);
+
+    if (props.pickupCoords.length === 2 && props.dropOffCoords.length === 2) {
+      addToMap(map, props.pickupCoords);
+      addToMap(map, props.dropOffCoords);
+      zoomToFit(map);
+    }
+  }, [props.pickupCoords, props.dropOffCoords]);
+
+  const addToMap = (map, coords) => {
+    const marker1 = new mapboxgl.Marker().setLngLat(coords).addTo(map);
+  };
+
+  const zoomToFit = (map) => {
+    map.fitBounds([props.pickupCoords, props.dropOffCoords], { padding: 60 });
+  };
 
   return <Wrapper id="map"></Wrapper>;
 };
 
 const Wrapper = tw.div`
-  flex-1
+  flex-1 h-1/2
 `;
 
 export default Map;

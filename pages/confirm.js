@@ -65,7 +65,7 @@ const Confirm = () => {
   );
 };
 
-export default confirm;
+export default Confirm;
 
 const Wrapper = tw.div`flex flex-col h-screen`;
 const RideContainer = tw.div`flex flex-1 flex-col  h-1/2`;

@@ -5,7 +5,7 @@ import Map from './components/Map';
 import { useRouter } from 'next/router';
 import RideSelector from './components/RideSelector';
 
-const Confirm = () => {
+const confirm = () => {
   const router = useRouter();
   const { pickup, dropoff } = router.query;
 
@@ -65,7 +65,7 @@ const Confirm = () => {
   );
 };
 
-export default Confirm;
+export default confirm;
 
 const Wrapper = tw.div`flex flex-col h-screen`;
 const RideContainer = tw.div`flex flex-1 flex-col  h-1/2`;

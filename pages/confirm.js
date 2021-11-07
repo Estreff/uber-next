@@ -56,7 +56,10 @@ const Confirm = () => {
       </ButtonContainer>
       <Map pickupCoords={pickupCoords} dropOffCoords={dropOffCoords} />
       <RideContainer>
-        <RideSelector />
+        <RideSelector
+          pickupCoords={pickupCoords}
+          dropOffCoords={dropOffCoords}
+        />
         <ConfirmLocations>
           <ConfirmButton>Confirm UberX</ConfirmButton>
         </ConfirmLocations>

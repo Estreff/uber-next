@@ -7,12 +7,32 @@ mapboxgl.accessToken =
 
 const Map = (props) => {
   useEffect(() => {
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/drakosi/ckvcwq3rwdw4314o3i2ho8tph',
-      center: [-99.29011, 39.39172],
-      zoom: 3,
-    });
+    const center = [];
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+    };
+
+    const success = ({ coords }) => {
+      center = [[coords.latitude, coords.longitude]];
+      console.log(center);
+    };
+
+    const error = (err) => {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
+
+    const map = new mapboxgl.Map(
+      {
+        container: 'map',
+        style: 'mapbox://styles/drakosi/ckvcwq3rwdw4314o3i2ho8tph',
+        center: [-99.29011, 39.39172],
+        zoom: 3,
+      },
+      []
+    );
 
     if (props.pickupCoords && props.dropOffCoords.length) {
       addToMap(map, props.pickupCoords);

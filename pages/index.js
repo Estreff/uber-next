@@ -8,10 +8,24 @@ import { useRouter } from 'next/router';
 
 export default function Home() {
   const [user, setUser] = useState(null);
-  const [currentCoords, setCurrentCoords] = useState([]);
+  const [currentCoords, setCurrentCoords] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+    };
+
+    const success = ({ coords }) => {
+      setCurrentCoords([coords.longitude, coords.latitude]);
+    };
+
+    const error = (err) => {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    };
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
     return onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser({
@@ -65,43 +79,17 @@ export default function Home() {
   );
 }
 
-const Wrapper = tw.div`
-  flex flex-col h-screen
-  `;
-
-const ActionItems = tw.div`
-  flex-1 p-4
-  `;
-
-const Header = tw.div`
-  flex justify-between items-center
-`;
-const UberLogo = tw.img`
-  h-28
-`;
-const Profile = tw.div`
-  flex items-center
-`;
-const Name = tw.div`
-mr-4 w-20 text-sm
-`;
-const UserImage = tw.img`
-h-12 w-12 rounded-full border-gray-200 p-px cursor-pointer
-`;
-
-const ActionButtons = tw.div`
-  flex
-`;
-
+const Wrapper = tw.div`flex flex-col h-screen`;
+const ActionItems = tw.div`flex-1 p-4`;
+const Header = tw.div`flex justify-between items-center`;
+const UberLogo = tw.img`h-28`;
+const Profile = tw.div`flex items-center`;
+const Name = tw.div`mr-4 w-20 text-sm`;
+const UserImage = tw.img`h-12 w-12 rounded-full border-gray-200 p-px cursor-pointer`;
+const ActionButtons = tw.div`flex`;
 const ActionButton = tw.div`
   flex flex-1 bg-gray-200 m-1 h-32 items-center flex-col justify-center rounded-lg
-  transform hover:scale-105 transition text-xl
+  transform hover:scale-105 transition text-xl border-2 border-blue-500
 `;
-
-const ActionButtonImage = tw.img`
-h-3/5
-`;
-
-const InputButton = tw.div`
-  h-20 bg-gray-200 text-xl rounded-lg p-4 flex items-center ml-1 mr-1 mt-8
-`;
+const ActionButtonImage = tw.img`h-3/5`;
+const InputButton = tw.div`h-20 bg-gray-200 text-xl rounded-lg p-4 flex items-center ml-1 mr-1 mt-8`;

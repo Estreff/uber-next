@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import tw from 'tailwind-styled-components';
 import Link from 'next/link';
+// import mapboxgl from 'mapbox-gl';
+// import Geocoder from 'react-map-gl-geocoder'
+// import 'react-map-gl-geocoder/dist/mapbox-gl-geocoder.css'
+// import accessTokens from '../../data/tokens';
 
 const Search = () => {
   const [pickup, setPickup] = useState('');
   const [dropoff, setDropoff] = useState('');
+
+  // mapboxgl.accessToken = accessTokens.mapboxgl;
 
   return (
     <Wrapper>
@@ -21,11 +27,13 @@ const Search = () => {
         </FromToIcons>
         <InputBoxes>
           <Input
+            className="goecoder"
             value={pickup}
             onChange={(e) => setPickup(e.target.value)}
             placeholder="Enter Pickup Location"
           />
           <Input
+            className="goecoder"
             value={dropoff}
             onChange={(e) => setDropoff(e.target.value)}
             placeholder="Where to?"

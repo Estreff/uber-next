@@ -12,20 +12,6 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-    const options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-    };
-
-    const success = ({ coords }) => {
-      setCurrentCoords([coords.longitude, coords.latitude]);
-    };
-
-    const error = (err) => {
-      console.warn(`ERROR(${err.code}): ${err.message}`);
-    };
-
-    navigator.geolocation.getCurrentPosition(success, error, options);
     return onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser({
@@ -66,7 +52,7 @@ export default function Home() {
               Wheels
             </ActionButton>
           </Link>
-          <Link href="#">
+          <Link href="/reserve">
             <ActionButton>
               <ActionButtonImage src="https://i.ibb.co/5RjchBg/uberschedule.png" />
               Reserve

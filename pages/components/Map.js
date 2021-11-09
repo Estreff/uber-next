@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import tw from 'tailwind-styled-components';
 import mapboxgl from 'mapbox-gl';
+import accessTokens from '../../data/tokens';
 
-mapboxgl.accessToken =
-  'pk.eyJ1IjoiZXN0cmVmZiIsImEiOiJja3ZscmZkY24ydmhzMnRudXVjdHJ6bzY1In0.vYyoSlZysdyypIUX80VkdA';
+mapboxgl.accessToken = accessTokens.mapboxgl;
 
 const Map = (props) => {
   const [currentCoords, setCurrentCoords] = useState(null);
@@ -36,7 +36,7 @@ const Map = (props) => {
         []
       );
       }
-
+    // }
       if(Object.entries(props).length === 0) {
         addToMap(map, currentCoords, 'blue')
       } else if  (props.pickupCoords && props.dropOffCoords) {
@@ -47,9 +47,11 @@ const Map = (props) => {
   }, [currentCoords, props.pickupCoords, props.dropOffCoords]);
 
   const addToMap = (map, coords, color) => {
-    const marker = new mapboxgl.Marker({color: color})
-.setLngLat(coords)
-.addTo(map);
+    if(coords) {
+      const marker = new mapboxgl.Marker({color: color})
+      .setLngLat(coords)
+      .addTo(map);
+    }
   };
 
   const zoomToFit = (map) => {

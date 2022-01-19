@@ -23,7 +23,6 @@ const Confirm = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-      console.log('Pickup: ', data)
         setPickUpCoords(data.features[0].center);
       });
   };
@@ -39,7 +38,6 @@ const Confirm = () => {
     )
       .then((response) => response.json())
       .then((data) => {
-      console.log('Dropoff: ', data);
         setDropOffCoords(data.features[0].center);
       });
   };
